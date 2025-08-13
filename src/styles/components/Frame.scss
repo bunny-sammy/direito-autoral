@@ -1,0 +1,10 @@
+@use "../abstract" as *;
+
+div.frame {
+    padding: 65px;
+    border: 40px solid transparent;
+    border-image-source: url('/images/frame_1.png');
+    border-image-slice: 65;
+    border-image-repeat: stretch;
+    border-image-width: 65px;
+}

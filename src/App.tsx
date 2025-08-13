@@ -1,43 +1,32 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.scss'
 
-import { TransformWrapper, TransformComponent, useControls } from "react-zoom-pan-pinch";
+import './styles/App.scss'
+import PanCanvas from './components/PanCanvas'
+import Frame from './components/Frame'
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
     <>
-      <TransformWrapper>
-        <TransformComponent>
-          <div id="canvas">
-            <div>
-              <a href="https://vite.dev" target="_blank">
-                <img src={viteLogo} className="logo" alt="Vite logo" />
-              </a>
-              <a href="https://react.dev" target="_blank">
-                <img src={reactLogo} className="logo react" alt="React logo" />
-              </a>
-            </div>
-            <h1>Autoria na Arte Digital</h1>
-            <div className="card">
-              <button onClick={() => setCount((count) => count + 1)}>
-                count is {count}
-              </button>
-              <p>
-                Edit <code>src/App.tsx</code> and save to test HMR
-              </p>
-            </div>
-            <p className="read-the-docs">
-              Click on the Vite and React logos to learn more
-            </p>
-          </div>
-        </TransformComponent>
-      </TransformWrapper>      
+      <PanCanvas>
+        <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
+          <h1>
+            A prova de autoria e<br/>o mundo digital
+          </h1>
+          <h3>
+            aspectos práticos
+          </h3>
+        </div>
+        <Frame id="test-frame">
+          Isto<br/>
+          é<br/>
+          um<br/>
+          teste<br/>
+                    Isto<br/>
+          é<br/>
+          um<br/>
+          teste<br/>
+        </Frame>
+      </PanCanvas>
     </>
   )
 }
-
-export default App

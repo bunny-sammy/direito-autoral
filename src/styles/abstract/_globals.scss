@@ -1,0 +1,26 @@
+@use "sass:map";
+
+// HEX COLORS
+$colors: (
+  background1: #FEEEE1,
+  background2: #FBC998,
+
+  text1: #1D398F
+);
+
+@function color($key) {
+  @return map.get($colors, $key);
+}
+
+// TYPOGRAPHY
+$text-sizes: (
+  xsmall: 0.625rem,
+  small: 0.75rem,
+  base: 1rem,
+  large: 1.25rem,
+  xlarge: 1.5rem
+);
+
+@function text($key) {
+  @return map.get($text-sizes, $key);
+}
