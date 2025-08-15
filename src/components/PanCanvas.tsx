@@ -1,55 +1,64 @@
-import React, { useCallback, useRef, useEffect } from "react"; // 1. Import useEffect
-import {
-    TransformWrapper,
-    TransformComponent,
-    type ReactZoomPanPinchRef,
-} from "react-zoom-pan-pinch";
+import React, { useRef, useImperativeHandle, forwardRef } from 'react';
+import { motion, useMotionValue, animate } from 'framer-motion';
 import '../styles/components/PanCanvas.scss';
 
-interface CanvasProps {
-    children?: React.ReactNode;
+interface PanCanvasProps {
+  children?: React.ReactNode;
 }
 
-export default function PanCanvas({ children }: CanvasProps) {
-    const transformRef = useRef<ReactZoomPanPinchRef | null>(null);
-
-    // 1. Modify the function to accept the library instance as its first argument.
-    const panToElement = useCallback((
-        instance: ReactZoomPanPinchRef | null,
-        id: string,
-        scale?: number,
-        animationTime = 600
-    ) => {
-        // Now we use the instance passed directly to the function.
-        if (!instance) return;
-
-        const targetScale = scale ?? instance.state.scale;
-        
-        instance.zoomToElement(id, targetScale, animationTime, "easeOut");
-    }, []);
-
-    return (
-        <TransformWrapper
-            ref={transformRef}
-            minScale={0.5}
-            initialScale={0.75}
-            maxScale={2}
-            limitToBounds={false}
-            centerOnInit={false}
-            smooth={true}
-            doubleClick={{ disabled: true }}
-            // 2. Use onInit and pass its instance argument directly to our function.
-            // This is the library's guarantee that the instance is ready.
-            onInit={(instance) => panToElement(instance, '113')}
-        >
-            <TransformComponent
-                wrapperStyle={{ width: "100%", height: "100%" }}
-                contentStyle={{ width: "5000px", height: "5000px" }}
-            >
-                <div id="canvas">
-                    {children}
-                </div>
-            </TransformComponent>
-        </TransformWrapper>
-    );
+export interface PanCanvasRef {
+  centerOnElement: (id: string, skip: boolean) => void;
 }
+
+export const PanCanvas = forwardRef<PanCanvasRef, PanCanvasProps>(({ children }, ref) => {
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const scale = useMotionValue(1);
+
+  const centerOnElement = (id: string, skipAnimation: boolean) => {
+    const targetElement = document.getElementById(id);
+
+    if (!targetElement || !viewportRef.current || !contentRef.current) {
+      console.error("Cannot center: A required element is not available.");
+      return;
+    }
+
+    const viewportRect = viewportRef.current.getBoundingClientRect();
+    const contentRect = contentRef.current.getBoundingClientRect();
+    const targetRect = targetElement.getBoundingClientRect();
+
+    const viewportCenterX = viewportRect.width / 2;
+    const viewportCenterY = viewportRect.height / 2;
+
+    const targetCenterX = targetRect.left - contentRect.left + targetRect.width / 2;
+    const targetCenterY = targetRect.top - contentRect.top + targetRect.height / 2;
+
+    const newX = viewportCenterX - targetCenterX;
+    const newY = viewportCenterY - targetCenterY;
+
+    if (skipAnimation) {
+      x.set(newX);
+      y.set(newY);
+    } else {
+      animate(x, newX, { type: 'spring', stiffness: 200, damping: 25 });
+      animate(y, newY, { type: 'spring', stiffness: 200, damping: 25 });
+    }
+  };
+
+  useImperativeHandle(ref, () => ({
+    centerOnElement,
+  }));
+
+  return (
+    <div id="canvas" ref={viewportRef}>
+      <motion.div ref={contentRef} drag dragMomentum={true} style={{ x, y, scale }}>
+        {children}
+      </motion.div>
+    </div>
+  );
+});
+
+export default PanCanvas;
