@@ -4,13 +4,21 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
 
   background-color: color(background1);
   color: color(text1);
+  cursor: grab;
 }
 
 h1, h2, h3, h4, p {
   margin: 0;
+}
+h1 {
+  font-size: text(xlarge);
+}
+h2 {
+  font-size: text(large);
+}
+h3, h4, p {
+  font-size: text(regular);
 }

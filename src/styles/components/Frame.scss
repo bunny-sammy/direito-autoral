@@ -1,10 +1,34 @@
 @use "../abstract" as *;
 
 div.frame {
-    padding: 65px;
-    border: 40px solid transparent;
-    border-image-source: url('/images/frame_1.png');
-    border-image-slice: 65;
+    border: 25px solid transparent;
     border-image-repeat: stretch;
-    border-image-width: 65px;
+    border-image-width: 12px;
+    border-image-slice: 65;
+    padding: 0.5rem;
+
+    &[frame-type="1"] {
+        border-image-source: url('/images/frame_1.png');
+        border-image-slice: 121;
+    }
+    &[frame-type="2"] {
+        border-image-source: url('/images/frame_2.png');
+        border-image-slice: 94;
+    }
+    &[frame-type="3"] {
+        border-image-source: url('/images/frame_3.png');
+        border-image-slice: 74;
+    }
+    &[frame-type="4"] {
+        border-image-source: url('/images/frame_4.png');
+        border-image-slice: 122;
+    }
+    &[frame-type="5"] {
+        border-image-source: url('/images/frame_5.png');
+        border-image-slice: 59;
+    }
+
+    &:not([frame-type="null"]) {
+        box-shadow: 0px 5px 8px color(background2);
+    }
 }
