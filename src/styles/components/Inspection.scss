@@ -18,8 +18,8 @@
 }
 
 .modal {
-  min-width: 40%;
-  max-width: 70%;
+  min-width: 30%;
+  max-width: 50%;
   height: 80%;
 
   display: flex;
@@ -40,7 +40,6 @@
     width: 80%;
     height: unset;
     max-height: 80%;
-
 
     flex-direction: column;
 

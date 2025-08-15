@@ -1,17 +1,26 @@
 @use "./abstract" as *;
 
 main.wall-grid {
-    --cell-size: 120px;
+    --cell-size: 260px;
 
     display: grid;
-    grid-template-columns: repeat(20, 1fr);
-    grid-template-rows: repeat(16, 1fr);
+    grid-template-columns: repeat(13, var(--cell-size));
+    grid-template-rows: repeat(5, var(--cell-size));
 
-    width: 5000px;
-    height: 5000px;
+    // width: 2500px;
+    // height: 2500px;
     padding: 50rem;
-    gap: 1rem;
+    gap: 2rem;
     
+}
+
+#title {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .ui-button {

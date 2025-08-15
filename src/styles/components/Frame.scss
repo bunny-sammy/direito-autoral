@@ -9,6 +9,11 @@ div.frame {
     background: linear-gradient(to bottom, white 20%, rgb(237, 237, 237));
     background-repeat: no-repeat;
 
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: center;
+
     &[frame-type="1"] {
         border-image-source: url('/images/frame_1.png');
         border-image-slice: 121;
@@ -34,7 +39,7 @@ div.frame {
         border-image-source: unset;
         border-image-slice: unset;
         border-image-width: unset;
-        padding: 1rem;
+        padding: 1.5rem;
     }
 
     &:not([frame-type="null"]) {
@@ -51,12 +56,23 @@ div.frame {
 }
 
 div.bigger-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
     background: linear-gradient(to bottom, white 20%, rgb(237, 237, 237));
     background-repeat: no-repeat;
 
     width: 100%;
     flex: 1 1 auto;
-    padding: 2rem;
+    padding: 1.5rem;
+
+    h3 {
+        font-size: 2rem;
+    }
+    p {
+        font-size: 1.25rem;
+    }
 }
 div.plaque {
      background: linear-gradient(to bottom, white 20%, rgb(237, 237, 237));
@@ -67,4 +83,8 @@ div.plaque {
     height: fit-content;
     padding: 1rem;
     margin: 1rem;
+
+    h2 {
+        white-space: nowrap;
+    }
 }

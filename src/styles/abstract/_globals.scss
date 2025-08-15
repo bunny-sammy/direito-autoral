@@ -15,11 +15,11 @@ $colors: (
 
 // TYPOGRAPHY
 $text-sizes: (
-  xsmall: 0.45rem,
-  small: 0.625rem,
-  base: 0.85rem,
-  large: 1rem,
-  xlarge: 1.5rem
+  xsmall: 0.625rem,
+  small: 0.75rem,
+  base: 1rem,
+  large: 1.5rem,
+  xlarge: 2rem
 );
 
 @function text($key) {
