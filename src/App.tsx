@@ -13,25 +13,11 @@ export default function App() {
   const modalRef = useRef<ModalRef>(null);
   const canvasRef = useRef<PanCanvasRef>(null);
 
-  const showSuccessModal = () => {
-    modalRef.current?.open(
-      <div className="text-center">
-        <h3 className="mt-4 text-2xl font-bold text-gray-800">Success!</h3>
-        <p className="mt-2 text-gray-600">Your operation was completed successfully.</p>
-        <button
-          onClick={() => modalRef.current?.close()}
-          className="mt-6 w-full px-4 py-2 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
-        >
-          Great!
-        </button>
-      </div>
-    );
+  const inspectFrameContent = (content: React.ReactNode) => {
+    modalRef.current?.open(content);
   };
 
   const centerOnElement = (id: string, skip: boolean=false) => {
-
-    showSuccessModal();
-
     if (canvasRef.current) {
       canvasRef.current.centerOnElement(id, skip);
     }
@@ -67,12 +53,29 @@ export default function App() {
             </h3>
           </Frame>
 
+          <Frame
+              id={`art_1`}
+              rowspan={2} type={3}
+              inspect={inspectFrameContent}
+              metadata={{
+                desc: 'Pintura Digital',
+                author: 'David Coelho',
+                link: 'https://www.instagram.com/p/C20pdj_RIrP/?img_index=2'
+              }}
+            >
+            <img src="/images/art_1.png" />
+          </Frame>
+
           {Array.from({ length: 2500 }).map((_, i) => {
             const type = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
             const span = Math.floor(Math.random() * (2 - 1 + 1)) + 1;
 
             return (
-              <Frame key={i} id={`${i}`} colspan={span} type={type}>
+              <Frame key={i}
+                id={`${i}`}
+                colspan={span} type={type}
+                inspect={inspectFrameContent}
+              >
                 Teste
               </Frame>
             )
