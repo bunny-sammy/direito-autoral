@@ -1,10 +1,12 @@
 {
   "name": "direito-autoral",
   "private": true,
-  "version": "0.0.0",
+  "homepage": "https://bunny-sammy.github.io/direito-autoral/",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "deploy": "gh-pages -d dist",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -22,6 +24,7 @@
     "eslint": "^9.33.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
+    "gh-pages": "^6.3.0",
     "globals": "^16.3.0",
     "sass-embedded": "^1.90.0",
     "typescript": "~5.8.3",
