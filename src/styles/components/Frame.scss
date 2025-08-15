@@ -1,11 +1,13 @@
 @use "../abstract" as *;
 
 div.frame {
-    border: 25px solid transparent;
-    border-image-repeat: stretch;
+    border-image-repeat: repeat;
     border-image-width: 12px;
     border-image-slice: 65;
-    padding: 0.5rem;
+    padding: 1.5rem;
+
+    background: linear-gradient(to bottom, white 20%, rgb(237, 237, 237));
+    background-repeat: no-repeat;
 
     &[frame-type="1"] {
         border-image-source: url('/images/frame_1.png');
@@ -26,6 +28,13 @@ div.frame {
     &[frame-type="5"] {
         border-image-source: url('/images/frame_5.png');
         border-image-slice: 59;
+    }
+    &[frame-type="6"] {
+        border: unset;
+        border-image-source: unset;
+        border-image-slice: unset;
+        border-image-width: unset;
+        padding: 1rem;
     }
 
     &:not([frame-type="null"]) {
