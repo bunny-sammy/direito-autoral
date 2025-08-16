@@ -43,9 +43,19 @@ export const Inspection = forwardRef<ModalRef, {}>((_props, ref) => {
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 50 }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-          >
+          >            
             {content}
           </motion.div>
+          <motion.button
+              onClick={close}              
+              className="exit-button"
+              initial={{ scale: 0.9, opacity: 0, y: 50 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 50 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            >
+            <img src={`${import.meta.env.BASE_URL}images/exit.png`} />
+          </motion.button>
         </motion.div>
       )}
     </AnimatePresence>

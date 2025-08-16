@@ -17,6 +17,19 @@ export default function App() {
     modalRef.current?.open(content);
   };
 
+  const openHelp = () => {
+    modalRef.current?.open(
+      <>
+        <div className="bigger-text" style={{textAlign: 'center'}}>
+            <h1>Boas-vindas à nossa galeria!</h1>
+            <br/>
+            <p>Arraste seu cursor para <b>explorar</b> o conteúdo.</p>
+            <p>Dê um clique duplo para <b>inspecionar</b> qualquer moldura!</p>
+        </div>
+      </>
+    );
+  };
+
   const openShare = () => {
     modalRef.current?.open(
       <>
@@ -64,6 +77,7 @@ export default function App() {
 
   useEffect(() => {
     centerOnElement('title', true);
+    openHelp();
   }, [])
 
   return (
@@ -267,7 +281,7 @@ export default function App() {
             <h3>Domínio Público: Prazo de Validade</h3>
             <p>É importante salientar que o prazo se refere apenas aos direitos patrimoniais do autor, não se aplicando aos direitos morais, isto é, a obra pode ser reproduzida, mas não alterada.</p>
           </Frame>
-          <Frame id="title" type={1} colspan={3}>
+          <Frame id="title" type={1} colspan={3} inspect={() => openHelp()}>
             <h1>A prova de autoria e<br/>o mundo digital</h1>
             <h3>aspectos práticos</h3>
             <br/>

@@ -18,6 +18,8 @@
 }
 
 .modal {
+  position: relative;
+
   min-width: 30%;
   max-width: 50%;
   height: 80%;
@@ -47,5 +49,22 @@
       width: 100%;
       height: unset;
     }
+  }  
+}
+
+button.exit-button {
+  position: absolute;
+  bottom: 0.85rem;
+  width: 80px;
+
+  img {
+    width: 100%;
+  }
+
+  @media (max-width: 640px) {
+    position: fixed;
+    bottom: 0.85rem;
+    right: 0.85rem;
+    width: 50px;
   }
 }
