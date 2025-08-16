@@ -277,15 +277,16 @@ export default function App() {
           <div></div>
           <div></div>
           <Frame
-              id={`art_8`}
+              id={`art_9`}
               rowspan={1} type={'random'}
               inspect={inspectFrameContent}
               metadata={{
                 title: 'Pixel Art',
-                author: 'Spartan'
+                author: 'Pedro Monteiro de Oliveira',
+                link: 'https://www.instagram.com/pixelsdopedro?igsh=enlpYmZub3o0cG9o'
               }}
             >
-            <img src={`${import.meta.env.BASE_URL}images/art_8.png`} />
+            <img src={`${import.meta.env.BASE_URL}images/art_9.png`} />
           </Frame>
           
           <div></div>
