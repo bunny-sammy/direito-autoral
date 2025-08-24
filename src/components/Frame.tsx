@@ -40,8 +40,11 @@ export default function Frame({ id, metadata=undefined, type=null, colspan=1, ro
                 {children}
                 {metadata &&
                     <div className="plaque">
-                        <h2><b>{metadata.title}</b></h2>
-                        {metadata.desc && <p>{metadata.desc}</p>}
+                        <h2>
+                            <b>{metadata.title}</b>
+                        </h2>
+                        {metadata.desc &&
+                            <p>{metadata.desc}</p>}
                         <p>Criador (a): <b>{metadata.author}</b></p>
                         <br/>
                         {metadata.link && <a href={metadata.link} target="_blank" rel="noopener noreferrer"

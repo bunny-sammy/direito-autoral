@@ -349,7 +349,7 @@ export default function App() {
           <div></div>
           <div></div>
           <div></div>
-          <Frame id={`text_1`} colspan={1} rowspan={1} type={6} inspect={inspectFrameContent}>
+          <Frame id={`text_1`} colspan={2} rowspan={1} type={6} inspect={inspectFrameContent}>
             <h3>Ferramentas digitais alternativas que tentam mitigar o problema do rastreamento da origem da obra</h3>
             <ul>
               <li>Carimbos de Tempo;</li>
@@ -375,14 +375,12 @@ export default function App() {
           <div></div>
           <div></div>
           <div></div>
-          <div></div>
           <Frame id={`text_1`} colspan={1} rowspan={1} type={6} inspect={inspectFrameContent}>
             <h3>Plágio</h3>
             <p>Apropriação indevida de obra intelectual (literária, artística, científica) de outra pessoa, apresentando-a como se fosse de sua própria autoria sem dar o devido crédito. Violação de direito autoral sujeita a sanções civis e eventualmente penais.</p>
           </Frame>
           <div></div>
           
-          <div></div>
           <div></div>
           <Frame id={`text_1`} colspan={1} rowspan={1} type={6} inspect={inspectFrameContent}>
             <h3>Desafios da prova de autoria em meio digital</h3>
@@ -424,10 +422,11 @@ export default function App() {
           </Frame>
           <div></div>
           <div></div>
-          <Frame id={`text_1`} colspan={2} rowspan={1} type={6} inspect={inspectFrameContent}>
+          <Frame id={`text_1`} colspan={1} rowspan={1} type={6} inspect={inspectFrameContent}>
             <h3>Inteligência Artificial e Autoria: Dados de Treinamento</h3>
             <p>Faz-se necessário cobrar transparência do processo de treinamento das IAs. Como os modelos generativos de arte são treinados em criações de artistas reais, fica aberta uma discussão se os produtos gerados configuram como plágio.</p>
           </Frame>
+          <div></div>
           <div></div>
           <Frame id={`text_1`} colspan={1} rowspan={1} type={6} inspect={inspectFrameContent}>
             <h3>Propriedade Intelctual</h3>
